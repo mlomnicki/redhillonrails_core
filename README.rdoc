@@ -167,6 +167,7 @@ First you have to fetch sources from github as specs are not inculded in a gem.
 === Contributors
 
 * Michał Łomnicki
-* François Beausoleil - http://github.com/francois
+* François Beausoleil - https://github.com/francois
 * Greg Barnett
+* Romulo A. Ceccon - https://github.com/romuloceccon
 
