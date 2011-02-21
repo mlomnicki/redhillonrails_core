@@ -47,8 +47,8 @@ describe "Schema dump" do
   end
   
   it "should order foreign keys" do
-    with_foreign_key Post, :user_id, :users, :id do
-      with_foreign_key Post, :author_id, :users, :id do
+    with_foreign_key Post, :user_id, :users, :id, :name => 'posts_user_id_fk' do
+      with_foreign_key Post, :author_id, :users, :id, :name => 'posts_author_id_fk' do
         foreign_key_defs = dump.split("\n").select { |x| x.match(/add_foreign_key/) }
         foreign_key_defs.size.should be_equal(2)
         foreign_key_defs[0].should match(to_regexp(%q{add_foreign_key "posts", ["author_id"], "users", ["id"]}))
