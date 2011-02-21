@@ -46,6 +46,28 @@ describe "Schema dump" do
     end
   end
   
+  it "should order foreign keys" do
+    with_foreign_key Post, :user_id, :users, :id do
+      with_foreign_key Post, :author_id, :users, :id do
+        foreign_key_defs = dump.split("\n").select { |x| x.match(/add_foreign_key/) }
+        foreign_key_defs.size.should be_equal(2)
+        foreign_key_defs[0].should match(to_regexp(%q{add_foreign_key "posts", ["author_id"], "users", ["id"]}))
+        foreign_key_defs[1].should match(to_regexp(%q{add_foreign_key "posts", ["user_id"], "users", ["id"]}))
+      end
+    end
+  end
+
+  it "should order indexes" do
+    with_index Post, :user_id do
+      with_index Post, :author_id do
+        foreign_key_defs = dump.split("\n").select { |x| x.match(/add_index/) }
+        foreign_key_defs.size.should be_equal(2)
+        foreign_key_defs[0].should match(to_regexp(%q{add_index "posts", ["author_id"]}))
+        foreign_key_defs[1].should match(to_regexp(%q{add_index "posts", ["user_id"]}))
+      end
+    end
+  end
+
   if ::ActiveRecord::Base.connection.class.include?(RedhillonrailsCore::ActiveRecord::ConnectionAdapters::PostgresqlAdapter)
 
   it "should define case insensitive index" do
@@ -71,7 +93,7 @@ describe "Schema dump" do
       dump.should match(to_regexp(%q{add_index "posts", ["body"], :name => "posts_body_index", :kind => "hash"}))
     end
   end
-
+  
   end # of postgresql specific examples
 
   protected
