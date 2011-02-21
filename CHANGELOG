@@ -1,3 +1,5 @@
+1.1.3
+    * sorting of indexes and foreign keys on schema dumper
 1.1.2
     * don't quote constraint name (bugfix)
 1.1.1

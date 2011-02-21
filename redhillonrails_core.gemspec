@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{redhillonrails_core}
-  s.version = "1.1.2"
+  s.version = "1.1.3.pre1"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
+  s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michał Łomnicki"]
-  s.date = %q{2011-01-10}
+  s.date = %q{2011-02-21}
   s.description = %q{Adds support in ActiveRecord for foreign_keys, complex indexes and other database-related stuff. Easily create foreign_keys, complex indexes and views.}
   s.email = %q{michal.lomnicki@gmail.com}
   s.extra_rdoc_files = [
@@ -53,7 +53,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = %q{http://github.com/mlomnicki/redhillonrails_core}
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{Adds support in ActiveRecord for foreign_keys, complex indexes and other database-related stuff}
   s.test_files = [
     "spec/connections/mysql/connection.rb",
@@ -77,7 +77,7 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<activerecord>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5"])
       s.add_development_dependency(%q<rspec>, ["~> 1.3"])
