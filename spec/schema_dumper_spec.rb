@@ -60,10 +60,10 @@ describe "Schema dump" do
   it "should order indexes" do
     with_index Post, :user_id do
       with_index Post, :author_id do
-        foreign_key_defs = dump.split("\n").select { |x| x.match(/add_index/) }
-        foreign_key_defs.size.should be_equal(2)
-        foreign_key_defs[0].should match(to_regexp(%q{add_index "posts", ["author_id"]}))
-        foreign_key_defs[1].should match(to_regexp(%q{add_index "posts", ["user_id"]}))
+        index_defs = dump.split("\n").select { |x| x.match(/add_index/) }
+        index_defs.size.should be_equal(2)
+        index_defs[0].should match(to_regexp(%q{add_index "posts", ["author_id"]}))
+        index_defs[1].should match(to_regexp(%q{add_index "posts", ["user_id"]}))
       end
     end
   end
