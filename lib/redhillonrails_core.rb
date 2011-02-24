@@ -14,6 +14,7 @@ require 'redhillonrails_core/active_record/connection_adapters/foreign_key_defin
 require 'redhillonrails_core/active_record/connection_adapters/column'
 require 'redhillonrails_core/active_record/connection_adapters/index_definition'
 require 'redhillonrails_core/active_record/connection_adapters/mysql_column'
+require 'redhillonrails_core/active_record/connection_adapters/schema_statements'
 require 'redhillonrails_core/active_record/connection_adapters/table_definition'
 
 module RedhillonrailsCore::ActiveRecord::ConnectionAdapters
@@ -29,3 +30,4 @@ ActiveRecord::ConnectionAdapters::IndexDefinition.send(:include, RedhillonrailsC
 ActiveRecord::ConnectionAdapters::TableDefinition.send(:include, RedhillonrailsCore::ActiveRecord::ConnectionAdapters::TableDefinition)
 ActiveRecord::ConnectionAdapters::Column.send(:include, RedhillonrailsCore::ActiveRecord::ConnectionAdapters::Column)
 ActiveRecord::ConnectionAdapters::AbstractAdapter.send(:include, RedhillonrailsCore::ActiveRecord::ConnectionAdapters::AbstractAdapter)
+ActiveRecord::ConnectionAdapters::SchemaStatements.send(:include, RedhillonrailsCore::ActiveRecord::ConnectionAdapters::SchemaStatements)

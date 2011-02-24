@@ -16,7 +16,9 @@ module RedhillonrailsCore
         end
 
         def foreign_key(column_names, references_table_name, references_column_names, options = {})
-          @foreign_keys << ForeignKeyDefinition.new(options[:name], nil, column_names, ::ActiveRecord::Migrator.proper_table_name(references_table_name), references_column_names, options[:on_update], options[:on_delete], options[:deferrable])
+          @foreign_keys << ForeignKeyDefinition.new(options[:name], name, column_names,
+              ::ActiveRecord::Migrator.proper_table_name(references_table_name), references_column_names,
+              options[:on_update], options[:on_delete], options[:deferrable])
           self
         end
 
