@@ -1,4 +1,4 @@
-begin 
+begin
   require 'active_record'
 rescue
   gem 'active_record'
@@ -6,6 +6,7 @@ rescue
 end
 
 # TODO: only needed adapters should be required here
+require 'redhillonrails_core/version'
 require 'redhillonrails_core/active_record/base'
 require 'redhillonrails_core/active_record/schema'
 require 'redhillonrails_core/active_record/schema_dumper'

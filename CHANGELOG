@@ -1,4 +1,5 @@
 1.1.3
+    * switched from jeweler to bundler
     * sorting of indexes and foreign keys on schema dumper
 1.1.2
     * don't quote constraint name (bugfix)

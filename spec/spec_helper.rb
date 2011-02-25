@@ -6,7 +6,7 @@ require 'redhillonrails_core'
 require 'connection'
 Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each {|f| require f}
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
   config.include(RedhillonrailsCoreMatchers)
   # load schema
   ActiveRecord::Migration.suppress_messages do
