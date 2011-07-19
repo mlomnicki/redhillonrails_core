@@ -59,6 +59,14 @@ module RedhillonrailsCore
           load_foreign_keys("to_table_name", table_name, name)
         end
 
+        def views(name = nil)
+          execute("SELECT name FROM sqlite_master WHERE type = 'view'").collect { |definition| definition["name"] }
+        end
+
+        def view_definition(view_name, name = nil)
+          select_one("SELECT sql FROM sqlite_master WHERE type = 'view' AND name = #{quote_table_name(view_name)}")["sql"]
+        end
+
         private
 
         def quoted_columns(columns)
