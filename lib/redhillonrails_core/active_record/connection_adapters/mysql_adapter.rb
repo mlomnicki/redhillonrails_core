@@ -8,6 +8,7 @@ module RedhillonrailsCore
           super
           base.class_eval do
             alias_method_chain :remove_column, :redhillonrails_core
+            alias_method_chain :structure_dump, :views
           end
         end
 
@@ -73,6 +74,26 @@ module RedhillonrailsCore
           end
 
           foreign_keys
+        end
+
+        def views(name = nil)
+          views = []
+          execute("SHOW FULL TABLES WHERE TABLE_TYPE='VIEW'", name).each{|row| views << row[0]}
+          views
+        end
+
+        def view_definition(view_name, name = nil)
+          select_one("SHOW CREATE VIEW #{quote_table_name(view_name)}", name)["Create View"]
+        end
+
+        def structure_dump_with_views
+          structure = structure_dump_without_views
+
+          views.each do |view|
+            structure += view_definition(view) + ";\n\n"
+          end
+
+          structure
         end
 
       end
