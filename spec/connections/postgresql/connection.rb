@@ -6,7 +6,7 @@ ActiveRecord::Base.logger = Logger.new("debug.log")
 ActiveRecord::Base.configurations = {
   'redhillonrails' => {
     :adapter => 'postgresql',
-    :database => 'redhillonrails_core_test',
+    :database => 'rhcore_test',
     :min_messages => 'warning'
   }
 

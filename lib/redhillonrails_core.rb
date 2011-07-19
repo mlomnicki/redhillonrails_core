@@ -1,4 +1,4 @@
-begin 
+begin
   require 'active_record'
 rescue
   gem 'active_record'
@@ -6,6 +6,7 @@ rescue
 end
 
 # TODO: only needed adapters should be required here
+require 'redhillonrails_core/version'
 require 'redhillonrails_core/active_record/base'
 require 'redhillonrails_core/active_record/schema'
 require 'redhillonrails_core/active_record/schema_dumper'
@@ -19,6 +20,7 @@ require 'redhillonrails_core/active_record/connection_adapters/table_definition'
 
 module RedhillonrailsCore::ActiveRecord::ConnectionAdapters
   autoload :MysqlAdapter, 'redhillonrails_core/active_record/connection_adapters/mysql_adapter'
+  autoload :MysqlAdapterFixes, 'redhillonrails_core/active_record/connection_adapters/mysql_adapter_fixes'
   autoload :PostgresqlAdapter, 'redhillonrails_core/active_record/connection_adapters/postgresql_adapter'
   autoload :Sqlite3Adapter, 'redhillonrails_core/active_record/connection_adapters/sqlite3_adapter'
 end
