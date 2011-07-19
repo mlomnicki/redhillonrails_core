@@ -88,6 +88,7 @@ describe "Foreign Key" do
       add_foreign_key(:select, :post_id, :posts, :id, :name => "test_fk")
       remove_foreign_key(:select,  "test_fk")
     end.should_not raise_error(Exception)
+    migration.suppress_messages { migration.drop_table :select }
   end
 
   protected

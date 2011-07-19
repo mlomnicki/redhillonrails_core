@@ -20,6 +20,7 @@ describe "Table definition" do
       Vote = Class.new(ActiveRecord::Base)
       Vote.foreign_keys.size.should == 1
       Vote.foreign_keys[0].table_name.should == 'votes'
+      connection.drop_table :votes
     end
 
   end
