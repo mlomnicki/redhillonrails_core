@@ -60,9 +60,9 @@ module RedhillonrailsCore
           execute "ALTER TABLE #{quote_table_name(table_name)} DROP CONSTRAINT #{foreign_key_name}"
         end
 
-        def drop_table_with_redhillonrails_core(name, options = {})
-          reverse_foreign_keys(name).each { |foreign_key| remove_foreign_key(foreign_key.table_name, foreign_key.name, options) }
-          drop_table_without_redhillonrails_core(name, options)
+        def drop_table_with_redhillonrails_core(name, *args)
+          reverse_foreign_keys(name).each { |foreign_key| remove_foreign_key(foreign_key.table_name, foreign_key.name) }
+          drop_table_without_redhillonrails_core(name)
         end
 
         def supports_partial_indexes?

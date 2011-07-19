@@ -10,7 +10,7 @@ module RedhillonrailsCore
 
         def move_table(from, to, options = {}, &block) #:nodoc:
           copy_table(from, to, options, &block)
-          drop_table(from, options)
+          drop_table(from)
         end
 
         def add_foreign_key(from_table_name, from_column_names, to_table_name, to_column_names, options = {})

@@ -82,7 +82,7 @@ module RedhillonrailsCore
         end
 
         def view_definition(view_name, name = nil)
-          select_one("SHOW CREATE VIEW #{quote_table_name(view_name)}", name)["Create View"]
+          execute("SHOW CREATE VIEW #{quote_table_name(view_name)}", name).first[1]
         end
 
       end
