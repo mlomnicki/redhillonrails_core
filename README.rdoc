@@ -162,7 +162,12 @@ First you have to fetch sources from github as specs are not inculded in a gem.
   $ bundle exec rake spec
 
   # to run postgresql specs only
-  $ bundle exec rake spec postgresql:spec 
+  $ bundle exec rake spec postgresql:spec
+
+=== Support
+
+Don't hesitate to ask questions on our mailing list.
+http://groups.google.com/group/rails-db
 
 === Contributors
 
