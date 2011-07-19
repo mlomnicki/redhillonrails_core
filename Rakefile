@@ -19,15 +19,16 @@ end
 
 task :default => :spec
 
+DBNAME = 'rhcore_test'
 namespace :postgresql do
   desc 'Build the PostgreSQL test databases'
   task :build_databases do
-    %x( createdb -E UTF8 rh_core_unittest )
+    %x( createdb -E UTF8 #{DBNAME} )
   end
 
   desc 'Drop the PostgreSQL test databases'
   task :drop_databases do
-    %x( dropdb rh_core_unittest )
+    %x( dropdb #{DBNAME} )
   end
 
   desc 'Rebuild the PostgreSQL test databases'
@@ -38,16 +39,16 @@ task :build_postgresql_databases => 'postgresql:build_databases'
 task :drop_postgresql_databases => 'postgresql:drop_databases'
 task :rebuild_postgresql_databases => 'postgresql:rebuild_databases'
 
-MYSQL_DB_USER = 'rh_core'
+MYSQL_DB_USER = 'rhcore'
 namespace :mysql do
   desc 'Build the MySQL test databases'
   task :build_databases do
-    %x( echo "create DATABASE rh_core_unittest DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_unicode_ci " | mysql --user=#{MYSQL_DB_USER})
+    %x( echo "create DATABASE #{DBNAME} DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_unicode_ci " | mysql --user=#{MYSQL_DB_USER})
   end
 
   desc 'Drop the MySQL test databases'
   task :drop_databases do
-    %x( mysqladmin --user=#{MYSQL_DB_USER} -f drop rh_core_unittest )
+    %x( mysqladmin --user=#{MYSQL_DB_USER} -f drop #{DBNAME} )
   end
 
   desc 'Rebuild the MySQL test databases'
