@@ -22,12 +22,12 @@ module RedhillonrailsCore
         def to_sql
           if name
             sql = "CONSTRAINT #{name} "
-          elsif !table_name.empty?
-            sql = "CONSTRAINT #{table_name}_#{column_names}_fkey "
+          elsif table_name.present?
+            sql = "CONSTRAINT #{table_name}_#{Array(column_names).join('_')}_fkey "
           else
             sql = ""
           end
-          
+
           sql << "FOREIGN KEY (#{quoted_column_names.join(", ")}) REFERENCES #{quoted_references_table_name} (#{quoted_references_column_names.join(", ")})"
           sql << " ON UPDATE #{ACTIONS[on_update]}" if on_update
           sql << " ON DELETE #{ACTIONS[on_delete]}" if on_delete
