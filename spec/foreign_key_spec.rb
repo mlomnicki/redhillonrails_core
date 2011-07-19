@@ -10,7 +10,7 @@ describe "Foreign Key" do
 
   context "when is added", "posts(author_id)" do
 
-    before(:each) do 
+    before(:each) do
       add_foreign_key(:posts, :author_id, :users, :id, :on_update => :cascade, :on_delete => :restrict)
     end
 
@@ -60,7 +60,7 @@ describe "Foreign Key" do
     it "is no longer available in Post.foreign_keys" do
       Comment.foreign_keys.collect(&:column_names).should_not include(%w[post_id])
     end
-    
+
     it "is no longer available in User.reverse_foreign_keys" do
       Post.reverse_foreign_keys.collect(&:column_names).should_not include(%w[post_id])
     end
@@ -76,6 +76,18 @@ describe "Foreign Key" do
       Post.reverse_foreign_keys.collect { |fk| fk.column_names == %w[post_id] && fk.table_name == "comments" }.should be_empty
     end
 
+  end
+
+  it "shouldn't raise when restrited keyword in table name is used" do
+    migration.suppress_messages do
+      migration.create_table :select, :force => true do |t|
+        t.integer :post_id
+      end
+    end
+    expect do
+      add_foreign_key(:select, :post_id, :posts, :id, :name => "test_fk")
+      remove_foreign_key(:select,  "test_fk")
+    end.should_not raise_error(Exception)
   end
 
   protected
