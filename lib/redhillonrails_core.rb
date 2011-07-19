@@ -19,6 +19,7 @@ require 'redhillonrails_core/active_record/connection_adapters/table_definition'
 
 module RedhillonrailsCore::ActiveRecord::ConnectionAdapters
   autoload :MysqlAdapter, 'redhillonrails_core/active_record/connection_adapters/mysql_adapter'
+  autoload :MysqlAdapterFixes, 'redhillonrails_core/active_record/connection_adapters/mysql_adapter_fixes'
   autoload :PostgresqlAdapter, 'redhillonrails_core/active_record/connection_adapters/postgresql_adapter'
   autoload :Sqlite3Adapter, 'redhillonrails_core/active_record/connection_adapters/sqlite3_adapter'
 end

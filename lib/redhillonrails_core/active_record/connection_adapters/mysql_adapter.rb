@@ -2,7 +2,10 @@ module RedhillonrailsCore
   module ActiveRecord
     module ConnectionAdapters
       module MysqlAdapter
+        include MysqlAdapterFixes
+
         def self.included(base)
+          super
           base.class_eval do
             alias_method_chain :remove_column, :redhillonrails_core
           end
