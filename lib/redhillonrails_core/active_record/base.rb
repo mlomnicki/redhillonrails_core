@@ -22,6 +22,7 @@ module RedhillonrailsCore
           abstract_class_without_redhillonrails_core? || !(name =~ /^Abstract/).nil?
         end
 
+        # TODO: remove this in redhillonrails_core 2.0
         def columns_with_redhillonrails_core
           unless @columns
             columns_without_redhillonrails_core
