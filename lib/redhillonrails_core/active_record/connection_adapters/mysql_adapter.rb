@@ -8,6 +8,7 @@ module RedhillonrailsCore
           super
           base.class_eval do
             alias_method_chain :remove_column, :redhillonrails_core
+            alias_method_chain :remove_columns, :redhillonrails_core
           end
         end
 
@@ -15,12 +16,16 @@ module RedhillonrailsCore
           execute "ALTER TABLE #{quote_table_name(table_name)} DROP FOREIGN KEY #{foreign_key_name}"
         end
 
-        def remove_column_with_redhillonrails_core(table_name, column_name)
-          foreign_keys(table_name).select { |foreign_key| foreign_key.column_names.include?(column_name.to_s) }.each do |foreign_key|
-            remove_foreign_key(table_name, foreign_key.name)
+        def remove_column_with_redhillonrails_core(table_name, *column_names)
+          column_names.each do |column_name|
+            foreign_keys(table_name).select { |foreign_key| foreign_key.column_names.include?(column_name.to_s) }.each do |foreign_key|
+              remove_foreign_key(table_name, foreign_key.name)
+            end
+            remove_column_without_redhillonrails_core(table_name, column_name)
           end
-          remove_column_without_redhillonrails_core(table_name, column_name)
         end
+
+        alias :remove_columns_with_redhillonrails_core :remove_column_with_redhillonrails_core
 
         def foreign_keys(table_name, name = nil)
           results = execute("SHOW CREATE TABLE #{quote_table_name(table_name)}", name)
