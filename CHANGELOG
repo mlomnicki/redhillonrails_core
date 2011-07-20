@@ -1,4 +1,5 @@
 1.2.0
+    * column.case_sensitive? and column.unique? are deprecated
     * compatibility with mysql 0.2.X line
     * quoteing fixes
     * proper foreign keys ordering
