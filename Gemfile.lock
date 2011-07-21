@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     redhillonrails_core (1.2.0)
-      activerecord (>= 2)
+      activerecord (~> 3.1.0.rc)
 
 GEM
   remote: http://rubygems.org/

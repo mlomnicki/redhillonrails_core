@@ -1,6 +1,8 @@
+2.0.0
+    * removed ConnectionAdapter::Column monkey patching
 1.2.0
     * compatibility with mysql 0.2.X line
-    * quoteing fixes
+    * quoting fixes
     * proper foreign keys ordering
     * views support for mysql and sqlite
 1.1.3
