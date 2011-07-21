@@ -26,7 +26,8 @@ As a gem
 == Compatibility 
 
 * Ruby - 1.8, 1.9
-* ActiveRecord - 2.X, 3.X
+* ActiveRecord - 2.X, 3.0
+* ActiveRecord - 3.1 in rails31 branch
 * Databases - PostgreSQL, MySQL, SQLite3 (most features should also run on others)
 
 === Foreign Key Support
