@@ -175,5 +175,5 @@ http://groups.google.com/group/rails-db
 * François Beausoleil - https://github.com/francois
 * Greg Barnett
 * Romulo A. Ceccon - https://github.com/romuloceccon
-* Laurynas Butkus - http://lauris.night.lt/
-* Fernando García Samblas - http://nando.lacoctelera.com/
+* Laurynas Butkus - http://lauris.night.lt
+* Fernando García Samblas - http://nando.lacoctelera.com
