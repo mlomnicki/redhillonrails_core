@@ -1,7 +1,7 @@
 1.2.0
     * column.case_sensitive? and column.unique? are deprecated
     * compatibility with mysql 0.2.X line
-    * quoteing fixes
+    * quoting fixes
     * proper foreign keys ordering
     * views support for mysql and sqlite
 1.1.3
