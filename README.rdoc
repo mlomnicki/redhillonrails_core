@@ -1,9 +1,3 @@
-= Disclaimer
-
-redhillonrails_core was originally created by http://github.com/harukizaemon but it was retired and is no longer supported.
-
-That fork is intended to make redhillonrails_core compatible with edge rails and introduce some new features.
-
 = RedHill on Rails Core
 
 Goal of redhillonrails_core is to provided missing ActiveRecord support for
@@ -12,6 +6,18 @@ database specific features:
 * foreign_keys
 * case-insensitive and partial indexes (pgsql only)
 * views
+
+== SchemaPlus - new and better redhillonrails_core
+
+redhillonrails_core is deprecated and SchemaPlus[https://github.com/lomba/schema_plus] is its successor.
+SchemaPlus is based on redhillonrails_core code but it is more flexible and new
+features are added only there. API isn't changed so migration should be very
+easy. Visit http://github.com/lomba/schema_plus to read more. 
+Also very cool SchemaValidations[https://github.com/lomba/schema_validations]
+and SchemaAssociations[https://github.com/lomba/schema_associations] gems are built
+on SchemaPlus.
+
+Although redhillonrails_core is deprecated, potential bugs will be fixed at least until the end of 2011.
 
 == Installation
 
@@ -164,6 +170,12 @@ First you have to fetch sources from github as specs are not inculded in a gem.
 
   # to run postgresql specs only
   $ bundle exec rake spec postgresql:spec
+
+= History
+
+redhillonrails_core was originally created by http://github.com/harukizaemon but it was retired and is no longer supported.
+
+That fork is intended to make redhillonrails_core compatible with edge rails and introduce some new features.
 
 === Support
 

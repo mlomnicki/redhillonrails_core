@@ -5,6 +5,8 @@ rescue
   require 'active_record'
 end
 
+ActiveSupport::Deprecation.warn("[redhillonrails_core] redhillonrails_core gem is deprecated. Please use https://github.com/lomba/schema_plus.git")
+
 # TODO: only needed adapters should be required here
 require 'redhillonrails_core/version'
 require 'redhillonrails_core/active_record/base'
