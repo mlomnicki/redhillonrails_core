@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "redhillonrails_core"
   s.version     = RedhillonrailsCore::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Michał Łomnicki"]
+  s.authors     = ["Michal Lomnicki"]
   s.email       = ["michal.lomnicki@gmail.com"]
   s.homepage    = "https://github.com/mlomnicki/redhillonrails_core"
   s.summary     = "Adds support in ActiveRecord for foreign_keys, complex indexes and other database-related stuff"
