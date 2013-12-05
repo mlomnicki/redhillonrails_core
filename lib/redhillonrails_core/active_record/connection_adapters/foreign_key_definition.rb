@@ -31,7 +31,7 @@ module RedhillonrailsCore
           sql << "FOREIGN KEY (#{quoted_column_names.join(", ")}) REFERENCES #{quoted_references_table_name} (#{quoted_references_column_names.join(", ")})"
           sql << " ON UPDATE #{ACTIONS[on_update]}" if on_update
           sql << " ON DELETE #{ACTIONS[on_delete]}" if on_delete
-          sql << " DEFERRABLE" if deferrable
+          sql << " DEFERRABLE INITIALLY DEFERRED" if deferrable
           sql
         end
 
