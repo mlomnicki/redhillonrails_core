@@ -10,8 +10,8 @@ module RedhillonrailsCore
 
         def to_dump
           dump = "add_foreign_key"
-          dump << " #{table_name.inspect}, [#{Array(column_names).collect{ |name| name.inspect }.join(', ')}]"
-          dump << ", #{references_table_name.inspect}, [#{Array(references_column_names).collect{ |name| name.inspect }.join(', ')}]"
+          dump << " #{table_name.inspect}, #{Array(column_names).collect{ |name| name.inspect }.join(', ')}"
+          dump << ", #{references_table_name.inspect}, #{Array(references_column_names).collect{ |name| name.inspect }.join(', ')}"
           dump << ", :on_update => :#{on_update}" if on_update
           dump << ", :on_delete => :#{on_delete}" if on_delete
           dump << ", :deferrable => #{deferrable}" if deferrable
@@ -31,7 +31,7 @@ module RedhillonrailsCore
           sql << "FOREIGN KEY (#{quoted_column_names.join(", ")}) REFERENCES #{quoted_references_table_name} (#{quoted_references_column_names.join(", ")})"
           sql << " ON UPDATE #{ACTIONS[on_update]}" if on_update
           sql << " ON DELETE #{ACTIONS[on_delete]}" if on_delete
-          sql << " DEFERRABLE" if deferrable
+          sql << " DEFERRABLE INITIALLY DEFERRED" if deferrable
           sql
         end
 
@@ -48,7 +48,7 @@ module RedhillonrailsCore
         def quoted_table_name
           ::ActiveRecord::Base.connection.quote_table_name(table_name)
         end
-        
+
         def quoted_references_table_name
           ::ActiveRecord::Base.connection.quote_table_name(references_table_name)
         end
